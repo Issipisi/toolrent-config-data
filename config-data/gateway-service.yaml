@@ -1,0 +1,75 @@
+server:
+  port: 8080
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # Herramientas
+        - id: tools-service
+          uri: lb://tools-service
+          predicates:
+            - Path=/api/tools/**
+          filters:
+            - RewritePath=/api/tools/(?<segment>.*), /$\{segment}
+
+        # Préstamos
+        - id: loans-service
+          uri: lb://loans-service
+          predicates:
+            - Path=/api/loans/**
+          filters:
+            - RewritePath=/api/loans/(?<segment>.*), /$\{segment}
+
+        # Clientes
+        - id: customers-service
+          uri: lb://customers-service
+          predicates:
+            - Path=/api/customers/**
+          filters:
+            - RewritePath=/api/customers/(?<segment>.*), /$\{segment}
+
+        # Tarifas
+        - id: tariffs-service
+          uri: lb://tariffs-service
+          predicates:
+            - Path=/api/tariffs/**
+          filters:
+            - RewritePath=/api/tariffs/(?<segment>.*), /$\{segment}
+
+        # Kardex
+        - id: kardex-service
+          uri: lb://kardex-service
+          predicates:
+            - Path=/api/kardex/**
+          filters:
+            - RewritePath=/api/kardex/(?<segment>.*), /$\{segment}
+
+        # Reportes
+        - id: reports-service
+          uri: lb://reports-service
+          predicates:
+            - Path=/api/reports/**
+          filters:
+            - RewritePath=/api/reports/(?<segment>.*), /$\{segment}
+
+        # Usuarios
+        - id: users-service
+          uri: lb://users-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - RewritePath=/api/users/(?<segment>.*), /$\{segment}
