@@ -23,53 +23,39 @@ spring:
           uri: lb://tools-service
           predicates:
             - Path=/api/tools/**
-          filters:
-            - RewritePath=/api/tools/(?<segment>.*), /$\{segment}
 
         # Préstamos
         - id: loans-service
           uri: lb://loans-service
           predicates:
             - Path=/api/loans/**
-          filters:
-            - RewritePath=/api/loans/(?<segment>.*), /$\{segment}
 
         # Clientes
         - id: customers-service
           uri: lb://customers-service
           predicates:
             - Path=/api/customers/**
-          filters:
-            - RewritePath=/api/customers/(?<segment>.*), /$\{segment}
 
         # Tarifas
         - id: tariffs-service
           uri: lb://tariffs-service
           predicates:
             - Path=/api/tariffs/**
-          filters:
-            - RewritePath=/api/tariffs/(?<segment>.*), /$\{segment}
 
         # Kardex
         - id: kardex-service
           uri: lb://kardex-service
           predicates:
             - Path=/api/kardex/**
-          filters:
-            - RewritePath=/api/kardex/(?<segment>.*), /$\{segment}
 
         # Reportes
         - id: reports-service
           uri: lb://reports-service
           predicates:
             - Path=/api/reports/**
-          filters:
-            - RewritePath=/api/reports/(?<segment>.*), /$\{segment}
 
         # Usuarios
         - id: users-service
           uri: lb://users-service
           predicates:
             - Path=/api/users/**
-          filters:
-            - RewritePath=/api/users/(?<segment>.*), /$\{segment}
