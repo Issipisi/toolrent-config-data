@@ -9,6 +9,7 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     hostname: localhost
+    prefer-ip-address: true  # ← AGREGAR ESTO
 
 spring:
   cloud:
@@ -23,39 +24,53 @@ spring:
           uri: lb://tools-service
           predicates:
             - Path=/api/tools/**
+          filters:
+            - StripPrefix=0
 
         # Préstamos
         - id: loans-service
           uri: lb://loans-service
           predicates:
             - Path=/api/loans/**
+          filters:
+            - StripPrefix=0
 
         # Clientes
         - id: customers-service
           uri: lb://customers-service
           predicates:
             - Path=/api/customers/**
+          filters:
+            - StripPrefix=0  # ← AGREGAR ESTO para mantener /api/customers
 
         # Tarifas
         - id: tariffs-service
           uri: lb://tariffs-service
           predicates:
             - Path=/api/tariffs/**
+          filters:
+            - StripPrefix=0
 
         # Kardex
         - id: kardex-service
           uri: lb://kardex-service
           predicates:
             - Path=/api/kardex/**
+          filters:
+            - StripPrefix=0
 
         # Reportes
         - id: reports-service
           uri: lb://reports-service
           predicates:
             - Path=/api/reports/**
+          filters:
+            - StripPrefix=0
 
         # Usuarios
         - id: users-service
           uri: lb://users-service
           predicates:
             - Path=/api/users/**
+          filters:
+            - StripPrefix=0
