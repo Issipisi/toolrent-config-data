@@ -21,4 +21,5 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port}  # ← CAMBIA ESTO
     prefer-ip-address: true
+    non-secure-port: ${server.port}
     hostname: localhost
