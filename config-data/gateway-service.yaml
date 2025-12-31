@@ -73,18 +73,18 @@ spring:
           filters:
             - StripPrefix=0
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+      health:
+        enabled: true
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     reactor.netty.http.client: DEBUG
-
-    management:
-      endpoints:
-        web:
-          exposure:
-            include: "*"
-      endpoint:
-        gateway:
-          enabled: true
-        health:
-          enabled: true
