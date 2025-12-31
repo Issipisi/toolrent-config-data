@@ -40,8 +40,6 @@ spring:
           uri: lb://customers-service
           predicates:
             - Path=/api/customers/**
-          filters:
-            - StripPrefix=0  # ← AGREGAR ESTO para mantener /api/customers
 
         # Tarifas
         - id: tariffs-service
@@ -74,3 +72,8 @@ spring:
             - Path=/api/users/**
           filters:
             - StripPrefix=0
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
