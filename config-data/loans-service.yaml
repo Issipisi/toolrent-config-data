@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: loans-service
+  main:
+    allow-bean-definition-overriding: true 
   datasource:
     url: jdbc:mysql://localhost:3308/loan_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
     username: root
@@ -13,14 +15,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  cloud:
-    openfeign:
-      client:
-        config:
-          default:
-            connect-timeout: 5000
-            read-timeout: 5000
-            logger-level: basic
 
 eureka:
   client:
