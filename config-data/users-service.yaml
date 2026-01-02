@@ -26,3 +26,8 @@ keycloak:
   realm: toolrent-realm
   client-id: toolrent-backend
   client-secret: t2IHk5XC0vWwXVhHMvoxN7BvxkBFrnqA
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.cloud.gateway: DEBUG
