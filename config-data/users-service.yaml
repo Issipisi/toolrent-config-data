@@ -22,7 +22,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 keycloak:
-  auth-server-url: http://localhost:8080
+  auth-server-url: http://localhost:8082
   realm: toolrent-realm
   client-id: toolrent-backend
   client-secret: t2IHk5XC0vWwXVhHMvoxN7BvxkBFrnqA
